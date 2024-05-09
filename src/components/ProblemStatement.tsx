@@ -64,7 +64,7 @@ export default function ProblemStatement(): ReactNode {
                 <div className="ml-5">Print The Following</div>
                 <div className="bg-[#696969] m-8 rounded-xl p-5 ">
                     {VisibleQue.Example.Output.map((data, index) => (
-                        <p>{data}</p>
+                        <p key={index}>{data}</p>
                     ))}
                 </div>
             </div>
@@ -75,7 +75,7 @@ export default function ProblemStatement(): ReactNode {
                 </strong>
                 <div className="m-5 p-1">
                     {VisibleQue.InputFormat.map((data, index) => (
-                        <p>{data}</p>
+                        <p key={index}>{data}</p>
                     ))}
                 </div>
             </div>
@@ -86,7 +86,7 @@ export default function ProblemStatement(): ReactNode {
                 </strong>
                 <div className="m-5 p-1">
                     {VisibleQue.Constrains.map((data, index) => (
-                        <p>{data}</p>
+                        <p key={index}>{data}</p>
                     ))}
                 </div>
             </div>
@@ -97,7 +97,7 @@ export default function ProblemStatement(): ReactNode {
                 <div className="bg-[#696969] m-8 rounded-xl p-5 ">
                     {VisibleQue.AnotherExample.SampleInput.map(
                         (data, index) => (
-                            <p>{data}</p>
+                            <p key={index}>{data}</p>
                         )
                     )}
                 </div>
@@ -108,7 +108,7 @@ export default function ProblemStatement(): ReactNode {
                 <div className="bg-[#696969] m-8 rounded-xl p-5 ">
                     {VisibleQue.AnotherExample.SampleOutput.map(
                         (data, index) => (
-                            <p>{data}</p>
+                            <p key={index}>{data}</p>
                         )
                     )}
                 </div>
@@ -123,6 +123,7 @@ export default function ProblemStatement(): ReactNode {
                 <Button
                     variant="outline"
                     className="m-2  w-[150px] text-white h-[40px] rounded-sm bg-green-600"
+                    onClick={() => setVisibleQue(questions[0])}
                 >
                     Submit & Next
                 </Button>
