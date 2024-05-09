@@ -1,7 +1,7 @@
 import React from "react";
 import CodeEditor from "./components/CodeEditor";
 import Navbar from "./components/Navbar";
-import Split from "react-split";
+// import Split from "react-split";
 import { useEffect } from "react";
 import ProblemStatement from "./components/ProblemStatement";
 
