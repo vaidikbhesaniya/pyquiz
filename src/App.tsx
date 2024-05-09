@@ -1,35 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import CodeEditor from "./components/CodeEditor";
+import Navbar from "./components/Navbar";
+import Split from "react-split";
+import ProblemStatement from "./components/ProblemStatement";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App(): React.ReactNode {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="bg-[#0F0F0F] h-screen w-full text-[#F2F2F2] overflow-hidden">
+      <Navbar />
+      <Split
+        className="h-[calc(100vh - 64px)] flex flex-col lg:flex-row bg-black"
+        gutterSize={10}
+        gutterAlign="start"
+        minSize={0}
+      >
+        <ProblemStatement />
+        <CodeEditor />
+      </Split>
+    </div>
+  );
 }
-
-export default App
