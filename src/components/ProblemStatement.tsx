@@ -1,9 +1,18 @@
-import { ReactNode } from "react";
+import { ReactNode, useRef } from "react";
 import { useState } from "react";
 import { Button } from "../../@/components/ui/button";
 export default function ProblemStatement(): ReactNode {
+    const slideRef = useRef<HTMLDivElement>(null);
+
+    function sideToTop() {
+        if (slideRef.current) {
+            slideRef.current.scrollTop = 0; // Scroll the slideRef element to the top
+        }
+    }
+
     const questions = [
         {
+            id: 1,
             Task: {
                 Head: "The provided code stub reads two integers from STDIN. a and b . Add code to print three lines where:",
                 Conditions: [
@@ -27,16 +36,47 @@ export default function ProblemStatement(): ReactNode {
                 SampleOutput: ["5", "1", "7"],
             },
         },
+
+        {
+            id: 2,
+            Task: {
+                Head: "The provided code stub reads two integers from STDIN. a and b . Add code to print three lines where:",
+                Conditions: [
+                    " The first line contains the sum of the two numbers. ",
+                    " The second line contains the difference of the two numbers (first - second). ",
+                    " The third line contains the product of the two numbers. ",
+                ],
+            },
+            Example: {
+                Input: ["a = 10;", "b = 20;"],
+                Output: ["8", "-2", "15"],
+            },
+            InputFormat: [
+                "1) The first line contains the first integer, a.",
+                "2) The second line contains the second integer, b.",
+            ],
+            OutputFormat: ["print the three line as explained above"],
+            Constrains: ["1≤a≤10^10", "1≤b≤10^10"],
+            AnotherExample: {
+                SampleInput: ["5", "2"],
+                SampleOutput: ["10", "3", "7"],
+            },
+        },
     ];
 
     const [VisibleQue, setVisibleQue] = useState(questions[0]);
 
     return (
         <div
-            className="bg-black lg:h-[100%]  w-[100%] h-[50%] overflow-auto poppins-medium  "
+            className="bg-black lg:h-[100%]  w-[100%] h-[50%] overflow-auto poppins-medium  scroll-smooth scrollbar-hide "
             id="slider"
+            ref={slideRef}
         >
             <div className="w-[100%] h-[120%]  lg:h-[60%] pl-5">
+                <strong className="text-white font-extrabold">
+                    {`Question ${VisibleQue.id}`}
+                    <br />
+                </strong>
                 <strong className="text-white font-extrabold">Task:</strong>
 
                 <div className="m-5 pl-5">
@@ -90,7 +130,7 @@ export default function ProblemStatement(): ReactNode {
                     ))}
                 </div>
             </div>
-            <div className="w-[100%] lg:h-[40%] h-[130%] pl-5">
+            <div className="w-[100%] lg:h-[70%] h-[130%] pl-5">
                 <strong className="text-white font-extrabold">
                     Sample Input 0:
                 </strong>
@@ -123,7 +163,10 @@ export default function ProblemStatement(): ReactNode {
                 <Button
                     variant="outline"
                     className="m-2  w-[150px] text-white h-[40px] rounded-sm bg-green-600"
-                    onClick={() => setVisibleQue(questions[0])}
+                    onClick={() => {
+                        setVisibleQue(questions[1]);
+                        sideToTop();
+                    }}
                 >
                     Submit & Next
                 </Button>
