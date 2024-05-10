@@ -19,7 +19,7 @@ export default function App(): React.ReactNode {
   return (
     <div className="bg-[#0F0F0F] h-[100dvh] w-[100dvw] text-[#F2F2F2] overflow-hidden">
       <Navbar />
-      <div className="h-[90vh]  flex flex-col w-[100vw]  lg:flex-row bg-white">
+      <div className="h-[90vh]  flex flex-col w-[100vw]  lg:flex-row">
         <ProblemStatement visibleQuestion={visibleQuestion} />
         <CodeEditor
           visibleQuestionId={visibleQuestion.id}
